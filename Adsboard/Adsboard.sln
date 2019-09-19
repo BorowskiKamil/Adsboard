@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.26124.0
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Adsboard.Api", "..\Adsboard.Api\src\Adsboard.Api\Adsboard.Api.csproj", "{48205644-961D-45F3-AE70-44E3B9C32B85}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Adsboard.Common", "..\Adsboard.Common\src\Adsboard.Common\Adsboard.Common.csproj", "{B6035896-6B71-42FB-B338-4359CD0CDC21}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +32,17 @@ Global
 		{48205644-961D-45F3-AE70-44E3B9C32B85}.Release|x64.Build.0 = Release|Any CPU
 		{48205644-961D-45F3-AE70-44E3B9C32B85}.Release|x86.ActiveCfg = Release|Any CPU
 		{48205644-961D-45F3-AE70-44E3B9C32B85}.Release|x86.Build.0 = Release|Any CPU
+		{B6035896-6B71-42FB-B338-4359CD0CDC21}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6035896-6B71-42FB-B338-4359CD0CDC21}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6035896-6B71-42FB-B338-4359CD0CDC21}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{B6035896-6B71-42FB-B338-4359CD0CDC21}.Debug|x64.Build.0 = Debug|Any CPU
+		{B6035896-6B71-42FB-B338-4359CD0CDC21}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{B6035896-6B71-42FB-B338-4359CD0CDC21}.Debug|x86.Build.0 = Debug|Any CPU
+		{B6035896-6B71-42FB-B338-4359CD0CDC21}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6035896-6B71-42FB-B338-4359CD0CDC21}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B6035896-6B71-42FB-B338-4359CD0CDC21}.Release|x64.ActiveCfg = Release|Any CPU
+		{B6035896-6B71-42FB-B338-4359CD0CDC21}.Release|x64.Build.0 = Release|Any CPU
+		{B6035896-6B71-42FB-B338-4359CD0CDC21}.Release|x86.ActiveCfg = Release|Any CPU
+		{B6035896-6B71-42FB-B338-4359CD0CDC21}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
