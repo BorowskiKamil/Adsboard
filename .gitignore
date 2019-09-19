@@ -1,2 +1,8 @@
 Adsboard.Api/src/Adsboard.Api/bin
 Adsboard.Api/src/Adsboard.Api/obj
+
+Adsboard.Common/src/Adsboard.Common/bin
+Adsboard.Common/src/Adsboard.Common/obj
+
+*/src/*/bin
+*/src/*/obj
