@@ -6,5 +6,9 @@ Adsboard.Api/src/Adsboard.Api/obj
 Adsboard.Common/src/Adsboard.Common/bin
 Adsboard.Common/src/Adsboard.Common/obj
 
+Adsboard.Identity/src/Adsboard.Identity/bin
+Adsboard.Identity/src/Adsboard.Identity/obj
+
+
 */src/*/bin
 */src/*/obj

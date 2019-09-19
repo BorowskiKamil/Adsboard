@@ -11,7 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
-namespace Adsboard.Api
+namespace Adsboard.Identity
 {
     public class Startup
     {
@@ -36,9 +36,9 @@ namespace Adsboard.Api
             else
             {
                 app.UseHsts();
-                app.UseHttpsRedirection();
             }
 
+            app.UseHttpsRedirection();
             app.UseRouting();
             app.UseAuthorization();
             app.UseEndpoints(endpoints =>
