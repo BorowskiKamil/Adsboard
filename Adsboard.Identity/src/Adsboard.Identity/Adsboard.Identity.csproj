@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Adsboard.Common\src\Adsboard.Common\Adsboard.Common.csproj" />
   </ItemGroup>
 
 </Project>
