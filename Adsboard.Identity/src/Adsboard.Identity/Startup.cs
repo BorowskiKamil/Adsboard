@@ -1,4 +1,6 @@
+using Adsboard.Common.Mvc;
 using Adsboard.Common.MySql;
+using Adsboard.Common.Swagger;
 using Adsboard.Identity.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -22,7 +24,8 @@ namespace Adsboard.Identity
             services.AddMySql();
             services.AddMySqlContext<ApplicationContext>();
             
-            services.AddControllers();
+            services.AddWebApi();
+            services.AddSwaggerDocs();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -34,9 +37,14 @@ namespace Adsboard.Identity
             else
             {
                 app.UseHsts();
+                app.UseHttpsRedirection();
             }
 
-            app.UseHttpsRedirection();
+            app.UseCors();
+            app.UseAllForwardedHeaders();
+            app.UseSwaggerDocs();
+            app.UseErrorHandler();
+
             app.UseRouting();
             app.UseAuthorization();
             app.UseEndpoints(endpoints =>
