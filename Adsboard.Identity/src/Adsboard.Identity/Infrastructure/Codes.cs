@@ -10,7 +10,7 @@ namespace Adsboard.Identity.Infrastructure
         public static string InvalidRole => "invalid_role";
         public static string RefreshTokenNotFound => "refresh_token_not_found";
         public static string RefreshTokenAlreadyRevoked => "refresh_token_already_revoked";
-        public static string UserNotFound => "user_not_found";
+        public static string IdentityNotFound => "identity_not_found";
         public static string SavingError => "saving_error";
         public static string IncorrectData => "incorrect_data";
     }

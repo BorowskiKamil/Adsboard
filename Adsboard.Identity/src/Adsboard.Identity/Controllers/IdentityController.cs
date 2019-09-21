@@ -1,5 +1,9 @@
 using System.Threading.Tasks;
+using Adsboard.Identity.Messages.Commands;
+using Adsboard.Identity.Services;
+using Adsboard.Common.Mvc;
 using Microsoft.AspNetCore.Mvc;
+using Adsboard.Identity.Infrastructure;
 
 namespace Adsboard.Identity.Controllers
 {
@@ -33,7 +37,7 @@ namespace Adsboard.Identity.Controllers
         [JwtAuth]
         public async Task<ActionResult> ChangePassword(ChangePassword command)
         {
-            await _identityService.ChangePasswordAsync(command.Bind(c => c.UserId, UserId).UserId, 
+            await _identityService.ChangePasswordAsync(command.Bind(c => c.IdentityId, UserId).IdentityId, 
                 command.CurrentPassword, command.NewPassword);
 
             return Ok();

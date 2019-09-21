@@ -5,6 +5,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="2.2.0" />
+
     <ProjectReference Include="..\..\..\Adsboard.Common\src\Adsboard.Common\Adsboard.Common.csproj" />
   </ItemGroup>
 
