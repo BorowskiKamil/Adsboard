@@ -1,0 +1,19 @@
+@url = http://localhost:5001
+
+### Sign up
+POST {{url}}/sign-up
+content-type: application/json
+
+{
+	"email": "test@testemail.com",
+	"password": "test"
+}
+
+### Sign in
+POST {{url}}/sign-in
+content-type: application/json
+
+{
+	"email": "test@testemail.com",
+	"password": "test"
+}

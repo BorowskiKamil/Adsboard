@@ -1,13 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26124.0
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29318.209
 MinimumVisualStudioVersion = 15.0.26124.0
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Adsboard.Api", "..\Adsboard.Api\src\Adsboard.Api\Adsboard.Api.csproj", "{48205644-961D-45F3-AE70-44E3B9C32B85}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Adsboard.Api", "..\Adsboard.Api\src\Adsboard.Api\Adsboard.Api.csproj", "{48205644-961D-45F3-AE70-44E3B9C32B85}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Adsboard.Common", "..\Adsboard.Common\src\Adsboard.Common\Adsboard.Common.csproj", "{B6035896-6B71-42FB-B338-4359CD0CDC21}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Adsboard.Common", "..\Adsboard.Common\src\Adsboard.Common\Adsboard.Common.csproj", "{B6035896-6B71-42FB-B338-4359CD0CDC21}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Adsboard.Identity", "..\Adsboard.Identity\src\Adsboard.Identity\Adsboard.Identity.csproj", "{5AE91A71-35FF-4A03-998A-1DC41E84B601}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Adsboard.Services.Identity", "..\Adsboard.Identity\src\Adsboard.Identity\Adsboard.Services.Identity.csproj", "{5AE91A71-35FF-4A03-998A-1DC41E84B601}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,9 +17,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{48205644-961D-45F3-AE70-44E3B9C32B85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -58,5 +55,11 @@ Global
 		{5AE91A71-35FF-4A03-998A-1DC41E84B601}.Release|x64.Build.0 = Release|Any CPU
 		{5AE91A71-35FF-4A03-998A-1DC41E84B601}.Release|x86.ActiveCfg = Release|Any CPU
 		{5AE91A71-35FF-4A03-998A-1DC41E84B601}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {86A4C416-9D95-4671-A4E6-E5C5C2417C85}
 	EndGlobalSection
 EndGlobal

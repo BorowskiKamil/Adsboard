@@ -1,7 +1,7 @@
 using System;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Adsboard.Identity.Controllers
+namespace Adsboard.Services.Identity.Controllers
 {
     public class BaseController : ControllerBase
     {

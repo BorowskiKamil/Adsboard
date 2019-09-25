@@ -2,7 +2,7 @@ using System;
 using Adsboard.Common.Messages;
 using Newtonsoft.Json;
 
-namespace Adsboard.Identity.Messages.Events
+namespace Adsboard.Services.Identity.Messages.Events
 {
     public class IdentityCreated : IEvent
     {

@@ -1,0 +1,48 @@
+version: '3.5'
+
+services:
+  mysql:
+    image: mysql:5.7
+    container_name: adsboard_mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: Adsboard
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+    ports:
+      - 3307:3306
+    expose:
+      - 3307
+    volumes:
+      - ../data/adsboard-mysql:/var/lib/mysql
+      - ../data/_MySQL_Init/Script:/docker-entrypoint-initdb.d
+    command: ['mysqld', '--character-set-server=utf8mb4', '--collation-server=utf8mb4_unicode_ci']
+    restart: always
+    networks:
+      - adsboard.network
+
+  rabbitmq:
+    image: "rabbitmq:3-management"
+    container_name: adsboard_rabbitmq
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+    volumes:
+      - ../conf/rabbitmq-isolated.conf:/etc/rabbitmq/rabbitmq.config
+    networks:
+      - adsboard.network
+
+  redis:
+    image: redis
+    container_name: adsboard_redis
+    ports:
+      - 6379:6379
+    networks:
+      - adsboard.network
+    volumes: 
+      - ../data/redis:/data
+
+networks:
+  adsboard.network:
+    name: adsboard.network
+    driver: "bridge"

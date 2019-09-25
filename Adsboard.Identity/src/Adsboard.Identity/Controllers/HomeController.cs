@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace Adsboard.Identity.Controllers
+namespace Adsboard.Services.Identity.Controllers
 {
     [Route("")]
     public class HomeController : ControllerBase

@@ -1,4 +1,4 @@
-namespace Adsboard.Identity.Infrastructure
+namespace Adsboard.Services.Identity.Infrastructure
 {
     public static class Codes
     {

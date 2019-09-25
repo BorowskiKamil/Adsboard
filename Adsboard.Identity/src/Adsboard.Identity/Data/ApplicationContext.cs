@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
-using Adsboard.Identity.Data.Mappings;
+using Adsboard.Services.Identity.Data.Mappings;
 
-namespace Adsboard.Identity.Data
+namespace Adsboard.Services.Identity.Data
 {
     public class ApplicationContext : DbContext
     {

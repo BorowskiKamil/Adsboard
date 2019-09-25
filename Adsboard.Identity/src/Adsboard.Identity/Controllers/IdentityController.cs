@@ -1,11 +1,11 @@
 using System.Threading.Tasks;
-using Adsboard.Identity.Messages.Commands;
-using Adsboard.Identity.Services;
+using Adsboard.Services.Identity.Messages.Commands;
+using Adsboard.Services.Identity.Services;
 using Adsboard.Common.Mvc;
 using Microsoft.AspNetCore.Mvc;
-using Adsboard.Identity.Infrastructure;
+using Adsboard.Services.Identity.Infrastructure;
 
-namespace Adsboard.Identity.Controllers
+namespace Adsboard.Services.Identity.Controllers
 {
     [Route("")]
     [ApiController]

@@ -1,17 +1,17 @@
 using System;
 using System.Threading.Tasks;
-using Adsboard.Identity.Data;
+using Adsboard.Services.Identity.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Adsboard.Identity.Domain;
-using Identity = Adsboard.Identity.Domain;
-using Adsboard.Identity.Dto;
+using Adsboard.Services.Identity.Domain;
+using Identity = Adsboard.Services.Identity.Domain;
+using Adsboard.Services.Identity.Dto;
 using Adsboard.Common.Types;
-using Adsboard.Identity.Infrastructure;
+using Adsboard.Services.Identity.Infrastructure;
 using Adsboard.Common.RabbitMq;
-using Adsboard.Identity.Messages.Events;
+using Adsboard.Services.Identity.Messages.Events;
 
-namespace Adsboard.Identity.Services
+namespace Adsboard.Services.Identity.Services
 {
     public class IdentityService : IIdentityService
     {

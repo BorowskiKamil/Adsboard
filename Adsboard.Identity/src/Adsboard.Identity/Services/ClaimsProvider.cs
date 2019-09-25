@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Adsboard.Identity.Services
+namespace Adsboard.Services.Identity.Services
 {
     public class ClaimsProvider : IClaimsProvider
     {

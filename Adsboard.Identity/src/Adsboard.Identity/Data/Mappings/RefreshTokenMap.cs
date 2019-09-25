@@ -1,8 +1,8 @@
-using Adsboard.Identity.Domain;
+using Adsboard.Services.Identity.Domain;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Adsboard.Identity.Data.Mappings
+namespace Adsboard.Services.Identity.Data.Mappings
 {    
     public class RefreshTokenMap : IEntityTypeConfiguration<RefreshToken>
     {

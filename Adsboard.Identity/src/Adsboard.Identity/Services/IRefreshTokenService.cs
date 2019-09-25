@@ -1,8 +1,8 @@
 using System;
 using System.Threading.Tasks;
-using Adsboard.Identity.Dto;
+using Adsboard.Services.Identity.Dto;
 
-namespace Adsboard.Identity.Services
+namespace Adsboard.Services.Identity.Services
 {
     public interface IRefreshTokenService
     {

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
-using Adsboard.Identity.Dto;
+using Adsboard.Services.Identity.Dto;
 
-namespace Adsboard.Identity.Infrastructure
+namespace Adsboard.Services.Identity.Infrastructure
 {
     public interface IJwtHandler
     {

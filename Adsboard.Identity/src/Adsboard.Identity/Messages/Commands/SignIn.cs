@@ -1,7 +1,7 @@
 using Adsboard.Common.Messages;
 using Newtonsoft.Json;
 
-namespace Adsboard.Identity.Messages.Commands
+namespace Adsboard.Services.Identity.Messages.Commands
 {
     public class SignIn : ICommand
     {

@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 
-namespace Adsboard.Identity.Infrastructure
+namespace Adsboard.Services.Identity.Infrastructure
 {
     public class JwtAuthAttribute : AuthAttribute
     {

@@ -2,14 +2,14 @@ using System;
 using System.Threading.Tasks;
 using Adsboard.Common.RabbitMq;
 using Adsboard.Common.Types;
-using Adsboard.Identity.Data;
-using Adsboard.Identity.Domain;
-using Adsboard.Identity.Dto;
-using Adsboard.Identity.Infrastructure;
+using Adsboard.Services.Identity.Data;
+using Adsboard.Services.Identity.Domain;
+using Adsboard.Services.Identity.Dto;
+using Adsboard.Services.Identity.Infrastructure;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
-namespace Adsboard.Identity.Services
+namespace Adsboard.Services.Identity.Services
 {
     public class RefreshTokenService : IRefreshTokenService
     {

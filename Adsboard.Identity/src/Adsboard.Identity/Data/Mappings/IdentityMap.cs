@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Adsboard.Identity.Data.Mappings
+namespace Adsboard.Services.Identity.Data.Mappings
 {    
     public class IdentityMap : IEntityTypeConfiguration<Domain.Identity>
     {

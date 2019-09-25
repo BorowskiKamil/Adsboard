@@ -5,9 +5,9 @@ using System.Security.Claims;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
-using Adsboard.Identity.Dto;
+using Adsboard.Services.Identity.Dto;
 
-namespace Adsboard.Identity.Infrastructure
+namespace Adsboard.Services.Identity.Infrastructure
 {
     public class JwtHandler : IJwtHandler
     {

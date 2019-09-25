@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Adsboard.Identity.Dto
+namespace Adsboard.Services.Identity.Dto
 {
     public class JsonWebToken
     {

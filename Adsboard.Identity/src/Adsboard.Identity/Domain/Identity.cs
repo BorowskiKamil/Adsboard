@@ -2,10 +2,10 @@ using System;
 using System.Text.RegularExpressions;
 using Adsboard.Common.Domain;
 using Adsboard.Common.Types;
-using Adsboard.Identity.Infrastructure;
+using Adsboard.Services.Identity.Infrastructure;
 using Microsoft.AspNetCore.Identity;
 
-namespace Adsboard.Identity.Domain
+namespace Adsboard.Services.Identity.Domain
 {
     public class Identity : Entity
     {
