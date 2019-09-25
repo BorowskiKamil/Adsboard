@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Adsboard.Common", "..\Adsbo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Adsboard.Services.Identity", "..\Adsboard.Identity\src\Adsboard.Identity\Adsboard.Services.Identity.csproj", "{5AE91A71-35FF-4A03-998A-1DC41E84B601}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Adsboard.Services.Users", "..\Adsboard.Services.Users\Adsboard.Services.Users.csproj", "{41CA55F3-D447-4E7B-9DC2-117A86B08064}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,6 +57,18 @@ Global
 		{5AE91A71-35FF-4A03-998A-1DC41E84B601}.Release|x64.Build.0 = Release|Any CPU
 		{5AE91A71-35FF-4A03-998A-1DC41E84B601}.Release|x86.ActiveCfg = Release|Any CPU
 		{5AE91A71-35FF-4A03-998A-1DC41E84B601}.Release|x86.Build.0 = Release|Any CPU
+		{41CA55F3-D447-4E7B-9DC2-117A86B08064}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{41CA55F3-D447-4E7B-9DC2-117A86B08064}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{41CA55F3-D447-4E7B-9DC2-117A86B08064}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{41CA55F3-D447-4E7B-9DC2-117A86B08064}.Debug|x64.Build.0 = Debug|Any CPU
+		{41CA55F3-D447-4E7B-9DC2-117A86B08064}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{41CA55F3-D447-4E7B-9DC2-117A86B08064}.Debug|x86.Build.0 = Debug|Any CPU
+		{41CA55F3-D447-4E7B-9DC2-117A86B08064}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{41CA55F3-D447-4E7B-9DC2-117A86B08064}.Release|Any CPU.Build.0 = Release|Any CPU
+		{41CA55F3-D447-4E7B-9DC2-117A86B08064}.Release|x64.ActiveCfg = Release|Any CPU
+		{41CA55F3-D447-4E7B-9DC2-117A86B08064}.Release|x64.Build.0 = Release|Any CPU
+		{41CA55F3-D447-4E7B-9DC2-117A86B08064}.Release|x86.ActiveCfg = Release|Any CPU
+		{41CA55F3-D447-4E7B-9DC2-117A86B08064}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
