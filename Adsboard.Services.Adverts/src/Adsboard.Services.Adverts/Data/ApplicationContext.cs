@@ -1,3 +1,4 @@
+using Adsboard.Services.Adverts.Data.Mappings;
 using Microsoft.EntityFrameworkCore;
 
 namespace Adsboard.Services.Adverts.Data

@@ -23,21 +23,20 @@ namespace Adsboard.Services.Adverts.Data.Mappings
                 .HasColumnType("TEXT")
                 .IsRequired(true);
 
-            builder.Property(f => f.Description)
-                .HasColumnName("description")
-                .HasColumnType("TEXT")
-                .IsRequired(true);
-
             builder.Property(f => f.CreatedAt)
                 .HasColumnName("created_at")
-                .HasDefaultValueSql("CURRENT_TIMESTAMP")
+                .IsRequired(true);
+
+            builder.Property(f => f.Creator)
+                .HasColumnName("creator_id")
                 .IsRequired(true);
 
             builder.Property(f => f.Category)
-                .HasColumnName("category");
+                .HasColumnName("category_id");
 
             builder.Property(f => f.Image)
-                .HasColumnName("image");
+                .HasColumnName("image")
+                .HasColumnType("VARCHAR(255)");
         }
     }
 }
