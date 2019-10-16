@@ -1,15 +1,15 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Adsboard.Api.Authentication;
+using Adsboard.Api.Services.RestEase;
+using Adsboard.Common.Dispatchers;
+using Adsboard.Common.Mvc;
+using Adsboard.Common.RabbitMq;
+using Adsboard.Common.Swagger;
+using Adsboard.Common.Validation;
+using Adsboard.Common.RestEase;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 
 namespace Adsboard.Api
 {
@@ -24,12 +24,21 @@ namespace Adsboard.Api
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
+            services.AddWebApi().AddValidation();
+            services.AddSwaggerDocs();
+            services.ConfigureAuthentication();
+
+            services.RegisterServiceForwarder<IAdvertsService>("adverts-service");
+            services.RegisterServiceForwarder<IOperationsService>("operations-service");
+            services.RegisterServiceForwarder<IUsersService>("users-service");
+
+            services.AddRabbitMq();
+            services.AddDispatchers();            
         }
 
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            if (env.IsDevelopment())
+            if (env.IsDevelopment() || env.EnvironmentName == "docker")
             {
                 app.UseDeveloperExceptionPage();
             }
@@ -39,12 +48,13 @@ namespace Adsboard.Api
                 app.UseHttpsRedirection();
             }
 
-            app.UseRouting();
-            app.UseAuthorization();
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
+            app.UseCors();
+            app.UseAllForwardedHeaders();
+            app.UseSwaggerDocs();
+            app.UseErrorHandler();
+            app.UseAuthentication();
+            app.UseMvc();
+            app.UseRabbitMq();
         }
     }
 }

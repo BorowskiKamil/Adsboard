@@ -32,6 +32,7 @@ namespace Adsboard.Services.Identity.Infrastructure
             _signingCredentials = new SigningCredentials(issuerSigningKey, SecurityAlgorithms.HmacSha256);
             _tokenValidationParameters = new TokenValidationParameters
             {
+                ValidateIssuerSigningKey = true,
                 IssuerSigningKey = issuerSigningKey,
                 ValidIssuer = _options.Issuer,
                 ValidAudience = _options.ValidAudience,

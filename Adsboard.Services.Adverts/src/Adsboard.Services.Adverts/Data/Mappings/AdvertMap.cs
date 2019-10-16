@@ -37,6 +37,10 @@ namespace Adsboard.Services.Adverts.Data.Mappings
             builder.Property(f => f.Image)
                 .HasColumnName("image")
                 .HasColumnType("VARCHAR(255)");
+
+            builder.Property(f => f.ArchivedAt)
+                .HasColumnName("archived_at")
+                .IsRequired(false);
         }
     }
 }

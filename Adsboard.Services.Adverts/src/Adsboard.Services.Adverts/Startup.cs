@@ -10,6 +10,8 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Adsboard.Services.Adverts.Messages.Commands;
+using Adsboard.Services.Adverts.Mappings;
 
 namespace Adsboard.Services.Adverts
 {
@@ -33,7 +35,7 @@ namespace Adsboard.Services.Adverts
             services.AddRabbitMq();
             services.AddDispatchers();
 
-            services.AddAutoMapperSetup();
+            services.AddAutoMapperSetup(typeof(DomainToDtoMappingProfile));
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -54,7 +56,9 @@ namespace Adsboard.Services.Adverts
             app.UseErrorHandler();
             app.UseAuthentication();
             app.UseMvc();
-            app.UseRabbitMq();
+            app.UseRabbitMq()
+                .SubscribeCommand<CreateAdvert>()
+                .SubscribeCommand<ArchiveAdvert>();
 
             app.InitializeMigrations<ApplicationContext>();
         }

@@ -1,4 +1,5 @@
 using System.Threading.Tasks;
+using Adsboard.Services.Identity.Dto;
 
 namespace Adsboard.Services.Identity.Infrastructure
 {

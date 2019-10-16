@@ -1,0 +1,16 @@
+@url = http://localhost:5004
+
+### get adverts
+GET {{url}}/adverts?userId={userId}
+Content-Type: application/json
+
+### create adverts
+POST {{url}}/adverts
+Content-Type: application/json
+
+{
+    "userId": "7ecd4501-1ac4-4882-bcb9-6569de4917bf",
+    "title": "Test title",
+    "description": "Test description",
+    "categoryId": "45d93721-e11e-4bab-a030-85b926420a17"
+}
