@@ -43,6 +43,18 @@ namespace Adsboard.Api.Controllers
                             resource: "adverts");
         }
 
+        [HttpPatch("{id:guid}")]
+        public async Task<IActionResult> UpdateAdvert(Guid id, [FromBody]UpdateAdvert command)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(command);
+            }
+
+            return await SendAsync(command.Bind(c => c.Id, id).Bind(c => c.UserId, UserId), resourceId: command.Id,
+                            resource: "adverts");
+        }
+
         [HttpDelete("{id:guid}")]
         public async Task<IActionResult> Archive(Guid id)
         {

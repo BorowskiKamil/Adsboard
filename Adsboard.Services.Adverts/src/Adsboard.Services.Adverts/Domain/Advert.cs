@@ -39,5 +39,26 @@ namespace Adsboard.Services.Adverts.Domain
 
             ArchivedAt = DateTimeOffset.UtcNow;
         }
+
+        public void UpdateTitle(string newTitle)
+        {
+            if (string.IsNullOrEmpty(newTitle) || newTitle.Length < 10)
+            {
+                throw new AdsboardException(Codes.WrongAdvertTitle,
+                    "Advert's title length have to be longer than 9 characters.");
+            }
+            Title = newTitle;
+        }
+
+        public void UpdateDescription(string newDescription)
+        {
+            if (string.IsNullOrEmpty(newDescription) || newDescription.Length < 20)
+            {
+                throw new AdsboardException(Codes.WrongAdvertDescription,
+                    "Advert's description length have to be longer than 19 characters.");
+            }
+            Description = newDescription;
+        }
+
     }
 }

@@ -58,7 +58,8 @@ namespace Adsboard.Services.Adverts
             app.UseMvc();
             app.UseRabbitMq()
                 .SubscribeCommand<CreateAdvert>()
-                .SubscribeCommand<ArchiveAdvert>();
+                .SubscribeCommand<ArchiveAdvert>()
+                .SubscribeCommand<UpdateAdvert>();
 
             app.InitializeMigrations<ApplicationContext>();
         }

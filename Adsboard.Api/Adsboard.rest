@@ -39,6 +39,15 @@ DELETE {{apiUrl}}/adverts/{advertId}
 content-type: application/json
 authorization: Bearer {{accessToken}}
 
+### Update advert with id
+PATCH {{apiUrl}}/adverts/{advertId}
+content-type: application/json
+authorization: Bearer {{accessToken}}
+
+{
+	"title": "a"
+}
+
 ### Create advert for logged user
 POST {{apiUrl}}/adverts
 Content-Type: application/json
