@@ -7,34 +7,34 @@ namespace Adsboard.Services.Categories.Domain
 {
     public class Category : Entity
     {
-        public string Title { get; private set; }
+        public string Name { get; private set; }
         public DateTimeOffset CreatedAt { get; private set; }
         public Guid Creator { get; private set; }
 
         private Category() { }
 
-        public Category(Guid id, string title, Guid creator)
+        public Category(Guid id, string name, Guid creator)
         {
-            if (string.IsNullOrEmpty(title) || title.Length < 5)
+            if (string.IsNullOrEmpty(name) || name.Length < 5)
             {
-                throw new AdsboardException(Codes.WrongCategoryTitle,
-                    "Category's title length have to be longer than 4 characters.");
+                throw new AdsboardException(Codes.WrongCategoryName,
+                    "Category's name length have to be longer than 4 characters.");
             }
 
             Id = id;
-            Title = title;
+            Name = name;
             CreatedAt = DateTimeOffset.UtcNow;
             Creator = creator;
         }
 
-        public void UpdateTitle(string newTitle)
+        public void UpdateTitle(string newName)
         {
-            if (string.IsNullOrEmpty(newTitle) || newTitle.Length < 5)
+            if (string.IsNullOrEmpty(newName) || newName.Length < 5)
             {
-                throw new AdsboardException(Codes.WrongCategoryTitle,
+                throw new AdsboardException(Codes.WrongCategoryName,
                     "Category's title length have to be longer than 4 characters.");
             }
-            Title = newTitle;
+            Name = newName;
         }
     }
 }

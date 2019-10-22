@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Adsboard.Services.Categories.Mappings;
+using Adsboard.Services.Categories.Messages.Commands;
 
 namespace Adsboard.Services.Categories
 {

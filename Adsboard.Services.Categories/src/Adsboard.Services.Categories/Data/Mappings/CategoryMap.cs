@@ -13,8 +13,8 @@ namespace Adsboard.Services.Categories.Data.Mappings
             builder.Property(f => f.Id)
                 .HasColumnName("id");
 
-            builder.Property(f => f.Title)
-                .HasColumnName("title")
+            builder.Property(f => f.Name)
+                .HasColumnName("name")
                 .HasColumnType("VARCHAR(255)")
                 .IsRequired(true);
 
