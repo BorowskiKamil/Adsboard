@@ -12,15 +12,15 @@ using Microsoft.Extensions.Logging;
 
 namespace Adsboard.Services.Categories.Handlers.Categories
 {
-    public class UpdateCategoryHandler : ICommandHandler<UpdateCategory>
+    public class RemoveCategoryHandler : ICommandHandler<RemoveCategory>
     {
         private readonly ApplicationContext _dbContext;
         private readonly DbSet<Category> _categoryRepository;
         private readonly IBusPublisher _busPublisher;
-        private readonly ILogger<UpdateCategoryHandler> _logger;
+        private readonly ILogger<RemoveCategoryHandler> _logger;
 
-        public UpdateCategoryHandler(ApplicationContext dbContext,
-            IBusPublisher busPublisher, ILogger<UpdateCategoryHandler> logger)
+        public RemoveCategoryHandler(ApplicationContext dbContext,
+            IBusPublisher busPublisher, ILogger<RemoveCategoryHandler> logger)
         {
             _dbContext = dbContext;
             _categoryRepository = dbContext.Set<Category>();
@@ -28,29 +28,24 @@ namespace Adsboard.Services.Categories.Handlers.Categories
             _logger = logger;
         }
 
-        public async Task HandleAsync(UpdateCategory command, ICorrelationContext context)
+        public async Task HandleAsync(RemoveCategory command, ICorrelationContext context)
         {
-            var category = await _categoryRepository.FirstOrDefaultAsync(x => x.Id == command.Id && command.UserId == command.UserId);
+            var category = await _categoryRepository.FirstOrDefaultAsync(x => x.Id == command.Id && x.Creator == command.UserId);
             if (category == null)
             {
                 throw new AdsboardException(Codes.CategoryNotFound, 
                     $"Couldn't find category with id: {category.Id}.");
             }
 
-            if (!string.IsNullOrEmpty(command.Name))
-            {
-                category.UpdateName(command.Name);
-            }
-
-            _dbContext.Update(category);
+            _dbContext.Remove(category);
             var saveResult = await _dbContext.SaveChangesAsync();
 
             if (saveResult == 0) 
             {
-                throw new AdsboardException(Codes.SavingCategoryError, "An error occured during saving category.");
+                throw new AdsboardException(Codes.RemovingCategoryError, "An error occured during removing category.");
             }
 
-            await _busPublisher.PublishAsync(new CategoryUpdated(command.Id, command.Name, command.UserId), context);
+            await _busPublisher.PublishAsync(new CategoryRemoved(command.Id, command.UserId), context);
         }
     }
 }
