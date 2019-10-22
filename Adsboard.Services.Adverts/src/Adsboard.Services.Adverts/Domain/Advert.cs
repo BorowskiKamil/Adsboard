@@ -19,6 +19,18 @@ namespace Adsboard.Services.Adverts.Domain
 
         public Advert(Guid id, string title, string description, Guid creator, Guid category, string image = null)
         {
+            if (string.IsNullOrEmpty(title) || title.Length < 10)
+            {
+                throw new AdsboardException(Codes.WrongAdvertTitle,
+                    "Advert's title length have to be longer than 9 characters.");
+            }
+
+            if (string.IsNullOrEmpty(description) || description.Length < 20)
+            {
+                throw new AdsboardException(Codes.WrongAdvertDescription,
+                    "Advert's description length have to be longer than 19 characters.");
+            }
+
             Id = id;
             Title = title;
             Description = description;
