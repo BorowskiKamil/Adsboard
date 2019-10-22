@@ -27,7 +27,7 @@ namespace Adsboard.Services.Categories.Domain
             Creator = creator;
         }
 
-        public void UpdateTitle(string newName)
+        public void UpdateName(string newName)
         {
             if (string.IsNullOrEmpty(newName) || newName.Length < 5)
             {

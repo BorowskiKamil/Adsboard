@@ -12,15 +12,15 @@ using Microsoft.Extensions.Logging;
 
 namespace Adsboard.Services.Categories.Handlers.Categories
 {
-    public class CreateCategoryHandler : ICommandHandler<CreateCategory>
+    public class UpdateCategoryHandler : ICommandHandler<UpdateCategory>
     {
         private readonly ApplicationContext _dbContext;
         private readonly DbSet<Category> _categoryRepository;
         private readonly IBusPublisher _busPublisher;
-        private readonly ILogger<CreateCategoryHandler> _logger;
+        private readonly ILogger<UpdateCategoryHandler> _logger;
 
-        public CreateCategoryHandler(ApplicationContext dbContext,
-            IBusPublisher busPublisher, ILogger<CreateCategoryHandler> logger)
+        public UpdateCategoryHandler(ApplicationContext dbContext,
+            IBusPublisher busPublisher, ILogger<UpdateCategoryHandler> logger)
         {
             _dbContext = dbContext;
             _categoryRepository = dbContext.Set<Category>();
@@ -28,18 +28,21 @@ namespace Adsboard.Services.Categories.Handlers.Categories
             _logger = logger;
         }
 
-        public async Task HandleAsync(CreateCategory command, ICorrelationContext context)
+        public async Task HandleAsync(UpdateCategory command, ICorrelationContext context)
         {
             var category = await _categoryRepository.FirstOrDefaultAsync(x => x.Id == command.Id);
-            if (category != null)
+            if (category == null)
             {
-                throw new AdsboardException(Codes.CategoryAlreadyExists, 
-                    $"Category with given id: {category.Id} already exists.");
+                throw new AdsboardException(Codes.CategoryNotFound, 
+                    $"Couldn't find category with id: {category.Id}.");
             }
 
-            category = new Category(command.Id, command.Name, command.UserId);
+            if (!string.IsNullOrEmpty(command.Name))
+            {
+                category.UpdateName(command.Name);
+            }
 
-            _dbContext.Add(category);
+            _dbContext.Update(category);
             var saveResult = await _dbContext.SaveChangesAsync();
 
             if (saveResult == 0) 
@@ -47,7 +50,7 @@ namespace Adsboard.Services.Categories.Handlers.Categories
                 throw new AdsboardException(Codes.SavingCategoryError, "An error occured during saving category.");
             }
 
-            await _busPublisher.PublishAsync(new CategoryCreated(command.Id, command.Name, command.UserId), context);
+            await _busPublisher.PublishAsync(new CategoryUpdated(command.Id, command.Name, command.UserId), context);
         }
     }
 }
