@@ -59,7 +59,7 @@ namespace Adsboard.Services.Categories.IntegrationTests.Fixtures
                 
                 if (entity is null)
                 {
-                    receivedTask.TrySetCanceled();
+                    receivedTask.TrySetResult(null);
                     return;
                 }
                 

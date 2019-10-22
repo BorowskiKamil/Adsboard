@@ -3,7 +3,7 @@ using Adsboard.Services.Categories;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.Extensions.Configuration;
 
-namespace Adsboard.Services.Adverts.IntegrationTests.Config
+namespace Adsboard.Services.Categories.IntegrationTests.Config
 {
     public static class AppConfig
     {

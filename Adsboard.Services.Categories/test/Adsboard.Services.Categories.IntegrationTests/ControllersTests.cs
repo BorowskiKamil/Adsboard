@@ -5,10 +5,10 @@ using Shouldly;
 using Xunit;
 using System;
 using Newtonsoft.Json;
-using Adsboard.Services.Adverts.IntegrationTests.Config;
 using Adsboard.Services.Categories.IntegrationTests.Fixtures;
 using Adsboard.Services.Categories.Domain;
 using Adsboard.Services.Categories.Dto;
+using Adsboard.Services.Categories.IntegrationTests.Config;
 
 namespace Adsboard.Services.Categories.IntegrationTests
 {

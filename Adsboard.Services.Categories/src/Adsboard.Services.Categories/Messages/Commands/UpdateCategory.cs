@@ -8,13 +8,13 @@ namespace Adsboard.Services.Categories.Messages.Commands
     {
         public Guid Id { get; }
         public Guid UserId { get; }
-
         public string Name { get; }
 
         [JsonConstructor]
-        public UpdateCategory(Guid id, string name)
+        public UpdateCategory(Guid id, Guid userId, string name)
         {
             Id = id;
+            UserId = userId;
             Name = name;
         }
     }
