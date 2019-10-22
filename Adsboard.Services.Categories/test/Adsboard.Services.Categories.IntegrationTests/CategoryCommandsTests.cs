@@ -1,5 +1,4 @@
 using System;
-using System.IO;
 using System.Threading.Tasks;
 using Adsboard.Services.Categories.Domain;
 using Adsboard.Services.Categories.IntegrationTests.Config;
@@ -7,7 +6,6 @@ using Adsboard.Services.Categories.IntegrationTests.Fixtures;
 using Adsboard.Services.Categories.Messages.Commands;
 using Adsboard.Services.Categories.Messages.Events;
 using Microsoft.AspNetCore.Mvc.Testing;
-using Microsoft.Extensions.Configuration;
 using Shouldly;
 using Xunit;
 
