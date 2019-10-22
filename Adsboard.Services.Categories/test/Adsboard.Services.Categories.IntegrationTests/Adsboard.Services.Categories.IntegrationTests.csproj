@@ -18,7 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Adsboard.Services.Adverts\Adsboard.Services.Adverts.csproj" />
+    <ProjectReference Include="..\..\src\Adsboard.Services.Categories\Adsboard.Services.Categories.csproj" />
   </ItemGroup>
 
   <ItemGroup>
