@@ -32,7 +32,7 @@ namespace Adsboard.Services.Adverts.Handlers.Adverts
 
         private async Task<IEnumerable<Advert>> GetCollection(FindAdverts query)
         {
-            if (query.UserId.HasValue)
+            if (query.UserId != null)
             {
                 return await _advertRepository.Where(x => x.Creator == query.UserId).ToListAsync();
             }

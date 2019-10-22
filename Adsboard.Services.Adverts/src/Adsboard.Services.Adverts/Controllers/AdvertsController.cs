@@ -20,8 +20,12 @@ namespace Adsboard.Services.Adverts.Controllers
             _dispatcher = dispatcher;
         }
 
+        // [HttpGet]
+        // public async Task<ActionResult<IEnumerable<AdvertDto>>> GetAds()
+        //     => Ok(await _dispatcher.QueryAsync(new FindAdverts()));
+
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<AdvertDto>>> GetUserAds([FromQuery] FindAdverts query)
+        public async Task<ActionResult<IEnumerable<AdvertDto>>> GetAdverts([FromQuery] FindAdverts query)
             => Ok(await _dispatcher.QueryAsync(query));
 
         [HttpGet("{id:guid}")]

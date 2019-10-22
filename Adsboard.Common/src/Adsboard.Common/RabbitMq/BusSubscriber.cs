@@ -41,6 +41,8 @@ namespace Adsboard.Common.RabbitMq
                 using (var scope = _serviceProvider.CreateScope()) 
                 {
                     var commandHandler = scope.ServiceProvider.GetService<ICommandHandler<TCommand>>();
+                    string cmdType = typeof(TCommand).FullName;
+                    string handler = typeof(ICommandHandler<TCommand>).FullName;
                     return await TryHandleAsync(command, correlationContext,
                         () => commandHandler.HandleAsync(command, correlationContext), onError);                       
                 }

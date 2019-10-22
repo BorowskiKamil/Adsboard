@@ -1,3 +1,5 @@
+using System;
+using System.Reflection;
 using Adsboard.Common.Handlers;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -11,8 +13,10 @@ namespace Adsboard.Common.Dispatchers
             services.AddTransient<IDispatcher, Dispatcher>();
             services.AddTransient<IQueryDispatcher, QueryDispatcher>();
 
+            var callingAssembly = Assembly.GetCallingAssembly().GetName().Name.ToString();
+
             services.Scan(scan => scan
-                .FromEntryAssembly()
+                .FromAssemblies(Assembly.Load(callingAssembly))
                 .AddClasses(classes => classes
                     .AssignableTo(typeof(IQueryHandler<,>)))
                     .AsImplementedInterfaces()

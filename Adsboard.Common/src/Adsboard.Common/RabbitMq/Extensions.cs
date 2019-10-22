@@ -9,6 +9,7 @@ using RawRabbit.Common;
 using RawRabbit.Enrichers.MessageContext;
 using Microsoft.AspNetCore.Builder;
 using Adsboard.Common.Handlers;
+using System.Reflection;
 
 namespace Adsboard.Common.RabbitMq
 {
@@ -34,9 +35,10 @@ namespace Adsboard.Common.RabbitMq
             }
 
             var namingConventions = new CustomNamingConventions(rabbitmqOptions.Namespace);
+            var callingAssembly = Assembly.GetCallingAssembly().GetName().Name.ToString();
 
             services.Scan(scan => scan
-                .FromEntryAssembly()
+                .FromAssemblies(Assembly.Load(callingAssembly))
                 .AddClasses(classes => classes
                     .AssignableTo(typeof(IEventHandler<>)))
                     .AsImplementedInterfaces()

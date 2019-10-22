@@ -1,5 +1,9 @@
 @url = http://localhost:5004
 
+### get all adverts
+GET {{url}}/adverts
+Content-Type: application/json
+
 ### get adverts
 GET {{url}}/adverts?userId={userId}
 Content-Type: application/json

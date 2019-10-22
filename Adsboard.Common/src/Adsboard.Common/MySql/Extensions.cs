@@ -41,7 +41,8 @@ namespace Adsboard.Common.MySql
         {
             using (var scope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
             {
-                scope.ServiceProvider.GetRequiredService<TContext>().Database.Migrate();
+                var dbContext = scope.ServiceProvider.GetRequiredService<TContext>();
+                dbContext.Database.Migrate();
             }
         }
     }

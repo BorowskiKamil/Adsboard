@@ -11,7 +11,7 @@ namespace Adsboard.Common.AutoMapper
 		{
 			if (services == null) throw new ArgumentNullException(nameof(services));
 
-			services.AddAutoMapper(Assembly.GetEntryAssembly());
+			services.AddAutoMapper(Assembly.GetCallingAssembly());
 			RegisterMappings();
 		}
 
