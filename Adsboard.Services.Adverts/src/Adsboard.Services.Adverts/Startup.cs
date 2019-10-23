@@ -12,6 +12,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Adsboard.Services.Adverts.Messages.Commands;
 using Adsboard.Services.Adverts.Mappings;
+using Adsboard.Services.Adverts.Messages.Events;
+using Adsboard.Services.Users.Messages.Events;
 
 namespace Adsboard.Services.Adverts
 {
@@ -59,8 +61,11 @@ namespace Adsboard.Services.Adverts
             app.UseRabbitMq()
                 .SubscribeCommand<CreateAdvert>()
                 .SubscribeCommand<ArchiveAdvert>()
-                .SubscribeCommand<UpdateAdvert>();
-
+                .SubscribeCommand<UpdateAdvert>()
+                .SubscribeEvent<CategoryCreated>()
+                .SubscribeEvent<CategoryRemoved>()
+                .SubscribeEvent<UserCreated>();
+                
             app.InitializeMigrations<ApplicationContext>();
         }
     }

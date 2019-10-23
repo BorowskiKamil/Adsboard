@@ -14,12 +14,15 @@ namespace Adsboard.Services.Users.Handlers.Events
         private readonly ApplicationContext _dbContext;
         private readonly DbSet<User> _userRepository;
         private readonly ILogger<IdentityCreatedHandler> _logger;
+        private readonly IBusPublisher _busPublisher;
 
-        public IdentityCreatedHandler(ApplicationContext dbContext, ILogger<IdentityCreatedHandler> logger)
+        public IdentityCreatedHandler(ApplicationContext dbContext, ILogger<IdentityCreatedHandler> logger,
+            IBusPublisher busPublisher)
         {
             _dbContext = dbContext;
             _userRepository = _dbContext.Set<User>();
             _logger = logger;
+            _busPublisher = busPublisher;
         }
 
         public async Task HandleAsync(IdentityCreated @event, ICorrelationContext context)
@@ -40,6 +43,8 @@ namespace Adsboard.Services.Users.Handlers.Events
             {
                 _logger.LogWarning($"There was a problem during saving user id: '{@event.IdentityId}'.");
             }
+
+            await _busPublisher.PublishAsync(new UserCreated(user.Id, user.Email), context);
         }
     }
 }
