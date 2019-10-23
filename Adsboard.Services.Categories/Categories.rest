@@ -1,0 +1,14 @@
+@url = http://localhost:5005
+
+### get all categories
+GET {{url}}/categories
+Content-Type: application/json
+
+### create category
+POST {{url}}/categories
+Content-Type: application/json
+
+{
+    "userId": "7ecd4501-1ac4-4882-bcb9-6569de4917bf",
+    "name": "Test category",
+}

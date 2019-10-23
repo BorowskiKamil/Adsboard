@@ -42,7 +42,7 @@ namespace Adsboard.Api.Controllers
         }
 
         [HttpPatch("{id:guid}")]
-        public async Task<IActionResult> UpdateAdvert(Guid id, [FromBody] UpdateCategory command)
+        public async Task<IActionResult> UpdateCategory(Guid id, [FromBody] UpdateCategory command)
         {
             if (!ModelState.IsValid)
             {

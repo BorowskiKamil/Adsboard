@@ -31,6 +31,7 @@ namespace Adsboard.Api
             services.RegisterServiceForwarder<IAdvertsService>("adverts-service");
             services.RegisterServiceForwarder<IOperationsService>("operations-service");
             services.RegisterServiceForwarder<IUsersService>("users-service");
+            services.RegisterServiceForwarder<ICategoriesService>("categories-service");
 
             services.AddRabbitMq();
             services.AddDispatchers();            

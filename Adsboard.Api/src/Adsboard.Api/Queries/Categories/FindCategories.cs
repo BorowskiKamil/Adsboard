@@ -1,10 +1,11 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Adsboard.Services.Categories.Queries
 {
     public class FindCategories
     {
-        public IEnumerable<Guid> Ids { get; set; }
+        public IQueryable<Guid> Ids { get; set; }
     }
 }

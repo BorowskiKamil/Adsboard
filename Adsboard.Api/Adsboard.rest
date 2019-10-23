@@ -1,6 +1,6 @@
 @apiUrl = http://localhost:5000
 @identityUrl = http://localhost:5001
-@accessToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwMTRhZDlkMjBiMTU0OGZhYjVlZDBmN2MzOWI1MjAzNSIsInVuaXF1ZV9uYW1lIjoiMDE0YWQ5ZDIwYjE1NDhmYWI1ZWQwZjdjMzliNTIwMzUiLCJqdGkiOiJhZTE0MGZkYS03OGJhLTQwZWEtYTRmZC01NmIzZTQ3YzQ1YTAiLCJpYXQiOiIxNTcxMjMwNTkxMDc3IiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoidXNlciIsIm5iZiI6MTU3MTIzMDU5MSwiZXhwIjoxNTcxMjMyMzkxLCJpc3MiOiJhZHNib2FyZC1pZGVudGl0eS1zZXJ2aWNlIn0.eY4ZSQFdiAMDxHHmwTy_f9Q7NIGFn9tXdRvcNe2SgyA
+@accessToken = xxxxxxxxxxxxxxx
 
 ### Sign up
 POST {{identityUrl}}/sign-up
@@ -58,4 +58,19 @@ authorization: Bearer {{accessToken}}
     "title": "Test title",
     "description": "Testing description, description testing.",
     "categoryId": "45d93721-e11e-4bab-a030-85b926420a17"
+}
+
+### get all categories
+GET {{apiUrl}}/categories
+Content-Type: application/json
+authorization: Bearer {{accessToken}}
+
+### create category
+POST {{apiUrl}}/categories
+Content-Type: application/json
+authorization: Bearer {{accessToken}}
+
+{
+    "userId": "7ecd4501-1ac4-4882-bcb9-6569de4917bf",
+    "name": "Test category",
 }

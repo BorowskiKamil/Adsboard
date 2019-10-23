@@ -8,6 +8,6 @@ namespace Adsboard.Services.Categories.Queries
 {
     public class FindCategories : IQuery<IEnumerable<CategoryDto>>
     {
-        public IEnumerable<Guid> Ids { get; set; }
+        public IQueryable<Guid> Ids { get; set; }
     }
 }
