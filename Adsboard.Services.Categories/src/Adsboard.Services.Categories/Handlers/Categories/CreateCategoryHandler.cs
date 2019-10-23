@@ -16,20 +16,26 @@ namespace Adsboard.Services.Categories.Handlers.Categories
     {
         private readonly ApplicationContext _dbContext;
         private readonly DbSet<Category> _categoryRepository;
+        private readonly DbSet<User> _userRepository;
         private readonly IBusPublisher _busPublisher;
-        private readonly ILogger<CreateCategoryHandler> _logger;
 
         public CreateCategoryHandler(ApplicationContext dbContext,
-            IBusPublisher busPublisher, ILogger<CreateCategoryHandler> logger)
+            IBusPublisher busPublisher)
         {
             _dbContext = dbContext;
             _categoryRepository = dbContext.Set<Category>();
             _busPublisher = busPublisher;
-            _logger = logger;
+            _userRepository = dbContext.Set<User>();
         }
 
         public async Task HandleAsync(CreateCategory command, ICorrelationContext context)
         {
+            var user = await _userRepository.FirstOrDefaultAsync(x => x.Id == command.UserId);
+            if (user == null)
+            {
+                throw new AdsboardException(Codes.UserNotFound, $"Couldn't find user with given id: {command.UserId}.");
+            }
+
             var category = await _categoryRepository.FirstOrDefaultAsync(x => x.Id == command.Id);
             if (category != null)
             {

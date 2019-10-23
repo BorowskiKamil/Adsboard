@@ -2,14 +2,13 @@ using System.Threading.Tasks;
 using Adsboard.Common.Handlers;
 using Adsboard.Common.RabbitMq;
 using Adsboard.Common.Types;
-using Adsboard.Services.Adverts.Data;
-using Adsboard.Services.Adverts.Domain;
-using Adsboard.Services.Adverts.Infrastructure;
-using Adsboard.Services.Adverts.Messages.Events;
+using Adsboard.Services.Categories.Data;
+using Adsboard.Services.Categories.Domain;
+using Adsboard.Services.Categories.Infrastructure;
+using Adsboard.Services.Categories.Messages.Events;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
 
-namespace Adsboard.Services.Adverts.Handlers.Users
+namespace Adsboard.Services.Categories.Handlers.Users
 {
     public class UserCreatedHandler : IEventHandler<UserCreated>
     {

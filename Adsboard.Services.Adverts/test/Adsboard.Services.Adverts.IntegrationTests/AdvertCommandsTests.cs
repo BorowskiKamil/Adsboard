@@ -7,7 +7,6 @@ using Adsboard.Services.Adverts.IntegrationTests.Fixtures;
 using Adsboard.Services.Adverts.Messages.Commands;
 using Adsboard.Services.Adverts.Messages.Events;
 using Microsoft.AspNetCore.Mvc.Testing;
-using Microsoft.Extensions.Configuration;
 using Shouldly;
 using Xunit;
 
@@ -86,7 +85,7 @@ namespace Adsboard.Services.Adverts.IntegrationTests
             var category = new Category(Guid.NewGuid(), user.Id);
             await _dbFixture.InsertAsync(category);
 
-            string advertDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum bibendum purus et libero vulputate elementum. Quisque hendrerit risus turpis, vitae tristique urna feugiat nec.";
+            string advertDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum bibendum purus et libero vulputate elementum.";
             var advert = new Advert(Guid.NewGuid(), "Test Advert Name", advertDescription, user.Id, 
                 category.Id, null);
             await _dbFixture.InsertAsync(advert);

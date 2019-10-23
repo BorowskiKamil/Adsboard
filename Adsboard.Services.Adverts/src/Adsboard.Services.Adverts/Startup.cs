@@ -13,7 +13,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Adsboard.Services.Adverts.Messages.Commands;
 using Adsboard.Services.Adverts.Mappings;
 using Adsboard.Services.Adverts.Messages.Events;
-using Adsboard.Services.Users.Messages.Events;
 
 namespace Adsboard.Services.Adverts
 {

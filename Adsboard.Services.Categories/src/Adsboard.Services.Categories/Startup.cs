@@ -12,6 +12,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Adsboard.Services.Categories.Mappings;
 using Adsboard.Services.Categories.Messages.Commands;
+using Adsboard.Services.Categories.Messages.Events;
 
 namespace Adsboard.Services.Categories
 {
@@ -59,10 +60,10 @@ namespace Adsboard.Services.Categories
             app.UseRabbitMq()
                 .SubscribeCommand<CreateCategory>()
                 .SubscribeCommand<UpdateCategory>()
-                .SubscribeCommand<RemoveCategory>();
+                .SubscribeCommand<RemoveCategory>()
+                .SubscribeEvent<UserCreated>();
 
             app.InitializeMigrations<ApplicationContext>();
-
         }
     }
 }

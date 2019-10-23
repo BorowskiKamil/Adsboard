@@ -2,7 +2,7 @@ using System;
 using Adsboard.Common.Messages;
 using Newtonsoft.Json;
 
-namespace Adsboard.Services.Adverts.Messages.Events
+namespace Adsboard.Services.Categories.Messages.Events
 {
     [MessageNamespace("users")]
     public class UserCreated : IEvent
