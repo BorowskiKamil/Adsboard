@@ -34,13 +34,13 @@ namespace Adsboard.Services.Adverts.Handlers.Adverts
 
         public async Task HandleAsync(CreateAdvert command, ICorrelationContext context)
         {
-            var category = _categoryRepository.FirstOrDefaultAsync(x => x.Id == command.CategoryId);
+            var category = await _categoryRepository.FirstOrDefaultAsync(x => x.Id == command.CategoryId);
             if (category == null)
             {
                 throw new AdsboardException(Codes.CategoryNotFound, $"Couldn't find category with given id: {command.CategoryId}.");
             }
 
-            var user = _userRepository.FirstOrDefaultAsync(x => x.Id == command.UserId);
+            var user = await _userRepository.FirstOrDefaultAsync(x => x.Id == command.UserId);
             if (user == null)
             {
                 throw new AdsboardException(Codes.UserNotFound, $"Couldn't find user with given id: {command.UserId}.");

@@ -40,8 +40,10 @@ namespace Adsboard.Services.Adverts.IntegrationTests
         {
             string advertDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum bibendum purus et libero vulputate elementum. Quisque hendrerit risus turpis, vitae tristique urna feugiat nec.";
             
-            var advert = new Advert(Guid.NewGuid(), "Test Advert Name", advertDescription, Guid.NewGuid(), 
-                Guid.NewGuid(), null);
+            var user = new User(Guid.NewGuid(), "test@test.com");
+            var category = new Category(Guid.NewGuid(), user.Id);
+            var advert = new Advert(Guid.NewGuid(), "Test Advert Name", advertDescription, user.Id, 
+                category.Id, null);
 
             await _dbFixture.InsertAsync(advert);
 

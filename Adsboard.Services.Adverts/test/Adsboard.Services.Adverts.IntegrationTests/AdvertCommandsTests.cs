@@ -30,25 +30,40 @@ namespace Adsboard.Services.Adverts.IntegrationTests
         [Fact]
         public async Task Create_Advert_Command_Should_Create_Entity()
         {
-            string advertDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum bibendum purus et libero vulputate elementum. Quisque hendrerit risus turpis, vitae tristique urna feugiat nec.";
-            var command = new CreateAdvert(Guid.NewGuid(), "Test title", advertDescription, Guid.NewGuid(), Guid.NewGuid(), null);
+            var user = new User(Guid.NewGuid(), "test@test.com");
+            await _dbFixture.InsertAsync(user);
+
+            var category = new Category(Guid.NewGuid(), user.Id);
+            await _dbFixture.InsertAsync(category);
+
+            string advertDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum bibendum purus et libero vulputate elementum.";
+            var command = new CreateAdvert(Guid.NewGuid(), "Test title", advertDescription, user.Id, category.Id, null);
             var creationTask = await _rabbitMqFixture.SubscribeAndGetAsync<AdvertCreated, Advert>(_dbFixture.GetEntityTask, command.Id);
             await _rabbitMqFixture.PublishAsync(command);
             
             var createdEntity = await creationTask.Task;
             
+            createdEntity.ShouldNotBeNull();
             createdEntity.Id.ShouldBe(command.Id);
             createdEntity.Title.ShouldBe(command.Title);
             createdEntity.Description.ShouldBe(command.Description);
             createdEntity.Image.ShouldBe(command.Image);
+            createdEntity.Creator.ShouldBe(user.Id);
+            createdEntity.Category.ShouldBe(category.Id);
         }
 
         [Fact]
         public async Task Archive_Advert_Command_Should_Archive_Entity()
         {
-            string advertDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum bibendum purus et libero vulputate elementum. Quisque hendrerit risus turpis, vitae tristique urna feugiat nec.";
-            var advert = new Advert(Guid.NewGuid(), "Test Advert Name", advertDescription, Guid.NewGuid(), 
-                Guid.NewGuid(), null);
+            var user = new User(Guid.NewGuid(), "test@test.com");
+            await _dbFixture.InsertAsync(user);
+
+            var category = new Category(Guid.NewGuid(), user.Id);
+            await _dbFixture.InsertAsync(category);
+
+            string advertDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum bibendum purus et libero vulputate elementum.";
+            var advert = new Advert(Guid.NewGuid(), "Test Advert Name", advertDescription, user.Id, 
+                category.Id, null);
             await _dbFixture.InsertAsync(advert);
 
             var command = new ArchiveAdvert(advert.Id, advert.Creator);
@@ -57,6 +72,7 @@ namespace Adsboard.Services.Adverts.IntegrationTests
 
             var archivedEntity = await archiveTask.Task;
 
+            archivedEntity.ShouldNotBeNull();
             archivedEntity.Id.ShouldBe(command.Id);
             archivedEntity.ArchivedAt.ShouldNotBeNull();
         }
@@ -64,9 +80,15 @@ namespace Adsboard.Services.Adverts.IntegrationTests
         [Fact]
         public async Task Update_Advert_Command_Should_Update_Entity_Title_And_Description()
         {
+            var user = new User(Guid.NewGuid(), "test@test.com");
+            await _dbFixture.InsertAsync(user);
+
+            var category = new Category(Guid.NewGuid(), user.Id);
+            await _dbFixture.InsertAsync(category);
+
             string advertDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum bibendum purus et libero vulputate elementum. Quisque hendrerit risus turpis, vitae tristique urna feugiat nec.";
-            var advert = new Advert(Guid.NewGuid(), "Test Advert Name", advertDescription, Guid.NewGuid(), 
-                Guid.NewGuid(), null);
+            var advert = new Advert(Guid.NewGuid(), "Test Advert Name", advertDescription, user.Id, 
+                category.Id, null);
             await _dbFixture.InsertAsync(advert);
 
             string newDescription = "Vestibulum bibendum purus et libero vulputate elementum. Quisque hendrerit risus turpis, vitae tristique urna feugiat nec.";

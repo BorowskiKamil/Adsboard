@@ -13,6 +13,8 @@ namespace Adsboard.Services.Adverts.Data
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new AdvertMap());
+            modelBuilder.ApplyConfiguration(new CategoryMap());
+            modelBuilder.ApplyConfiguration(new UserMap());
 
             base.OnModelCreating(modelBuilder);
         }
