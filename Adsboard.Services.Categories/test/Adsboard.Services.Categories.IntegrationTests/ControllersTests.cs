@@ -37,9 +37,11 @@ namespace Adsboard.Services.Categories.IntegrationTests
 
         [Fact]
         public async Task Adverts_Details_Endpoint_Should_Return_Correct_Model()
-        {            
-            var category = new Category(Guid.NewGuid(), "Category 1", Guid.NewGuid());
+        {         
+            var user = new User(Guid.NewGuid(), "test@test.com");
+            await _dbFixture.InsertAsync(user);
 
+            var category = new Category(Guid.NewGuid(), "Category 1", user.Id);
             await _dbFixture.InsertAsync(category);
 
             var response = await _client.GetAsync($"categories/{category.Id}");

@@ -28,7 +28,10 @@ namespace Adsboard.Services.Categories.IntegrationTests
         [Fact]
         public async Task Create_Category_Command_Should_Create_Entity()
         {
-            var command = new CreateCategory(Guid.NewGuid(), "Category 1", Guid.NewGuid());
+            var user = new User(Guid.NewGuid(), "test@test.com");
+            await _dbFixture.InsertAsync(user);
+
+            var command = new CreateCategory(Guid.NewGuid(), "Category 1", user.Id);
             var creationTask = await _rabbitMqFixture.SubscribeAndGetAsync<CategoryCreated, Category>(_dbFixture.GetEntityTask, command.Id);
             await _rabbitMqFixture.PublishAsync(command);
             
@@ -43,7 +46,10 @@ namespace Adsboard.Services.Categories.IntegrationTests
         [Fact]
         public async Task Remove_Category_Command_Should_Remove_Entity()
         {
-            var category = new Category(Guid.NewGuid(), "Category 1", Guid.NewGuid());
+            var user = new User(Guid.NewGuid(), "test@test.com");
+            await _dbFixture.InsertAsync(user);
+
+            var category = new Category(Guid.NewGuid(), "Category 1", user.Id);
             await _dbFixture.InsertAsync(category);
 
             var command = new RemoveCategory(category.Id, category.Creator);
@@ -58,7 +64,10 @@ namespace Adsboard.Services.Categories.IntegrationTests
         [Fact]
         public async Task Update_Category_Command_Should_Update_Entity_Name()
         {
-            var category = new Category(Guid.NewGuid(), "New Category", Guid.NewGuid());
+            var user = new User(Guid.NewGuid(), "test@test.com");
+            await _dbFixture.InsertAsync(user);
+
+            var category = new Category(Guid.NewGuid(), "New Category", user.Id);
             await _dbFixture.InsertAsync(category);
 
             var command  = new UpdateCategory(category.Id, category.Creator, "Updated Category Name");
