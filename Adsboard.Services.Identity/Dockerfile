@@ -8,7 +8,7 @@ RUN dotnet publish "Adsboard.Services.Identity/src/Adsboard.Services.Identity/Ad
 FROM mcr.microsoft.com/dotnet/core/aspnet:2.2
 WORKDIR /app
 COPY --from=build /app .
-ENV ASPNETCORE_URLS http://*:5005
+ENV ASPNETCORE_URLS http://*:5001
 ENV ASPNETCORE_ENVIRONMENT docker
-EXPOSE 5004
+EXPOSE 5001
 ENTRYPOINT dotnet Adsboard.Services.Identity.dll

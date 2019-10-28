@@ -8,7 +8,7 @@ RUN dotnet publish "Adsboard.Services.Operations/src/Adsboard.Services.Operation
 FROM mcr.microsoft.com/dotnet/core/aspnet:2.2
 WORKDIR /app
 COPY --from=build /app .
-ENV ASPNETCORE_URLS http://*:5005
+ENV ASPNETCORE_URLS http://*:5003
 ENV ASPNETCORE_ENVIRONMENT docker
-EXPOSE 5004
+EXPOSE 5003
 ENTRYPOINT dotnet Adsboard.Services.Operations.dll

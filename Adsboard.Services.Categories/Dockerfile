@@ -10,5 +10,5 @@ WORKDIR /app
 COPY --from=build /app .
 ENV ASPNETCORE_URLS http://*:5005
 ENV ASPNETCORE_ENVIRONMENT docker
-EXPOSE 5004
+EXPOSE 5005
 ENTRYPOINT dotnet Adsboard.Services.Categories.dll

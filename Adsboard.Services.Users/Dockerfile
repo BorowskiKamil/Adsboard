@@ -1,20 +1,14 @@
-FROM mcr.microsoft.com/dotnet/core/aspnet:2.2-stretch-slim AS base
+FROM mcr.microsoft.com/dotnet/core/sdk AS build
 WORKDIR /app
-EXPOSE 80
-EXPOSE 443
-
-FROM mcr.microsoft.com/dotnet/core/sdk:2.2-stretch AS build
-WORKDIR /src
-COPY ["Adsboard.Services.Users/Adsboard.Services.Users.csproj", "Adsboard.Services.Users/"]
-RUN dotnet restore "Adsboard.Services.Users/Adsboard.Services.Users.csproj"
+COPY ["Adsboard.Services.Users/src/Adsboard.Services.Users/Adsboard.Services.Users.csproj", "Adsboard.Services.Users/src/Adsboard.Services.Users/"]
+COPY ["Adsboard.Common/src/Adsboard.Common/Adsboard.Common.csproj", "Adsboard.Common/src/Adsboard.Common/"]
 COPY . .
-WORKDIR "/src/Adsboard.Services.Users"
-RUN dotnet build "Adsboard.Services.Users.csproj" -c Release -o /app/build
+RUN dotnet publish "Adsboard.Services.Users/src/Adsboard.Services.Users/Adsboard.Services.Users.csproj" -c Release -o /app
 
-FROM build AS publish
-RUN dotnet publish "Adsboard.Services.Users.csproj" -c Release -o /app/publish
-
-FROM base AS final
+FROM mcr.microsoft.com/dotnet/core/aspnet:2.2
 WORKDIR /app
-COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "Adsboard.Services.Users.dll"]
+COPY --from=build /app .
+ENV ASPNETCORE_URLS http://*:5002
+ENV ASPNETCORE_ENVIRONMENT docker
+EXPOSE 5002
+ENTRYPOINT dotnet Adsboard.Services.Users.dll
