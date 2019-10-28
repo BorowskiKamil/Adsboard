@@ -7,9 +7,9 @@ The recommended way of running this project is using 🐳 docker compose. You ca
 docker-compose -f mysql-rabbitmq-redis.yml up
 docker-compose -f services.yml up
 ```
-It's required to run both of commands. By running first one you'll run dependencies, infrastructural services like mysql, rabbitmq and redis. Second command runs project's services.
+It's required to run both of commands. By executing first one you'll run dependencies, infrastructural services like mysql, rabbitmq and redis. Second command runs project's services.
 
-There's also possibility to run project by going to particual service's project and executing ```dotnet run``` in ```src/[PROJECT_NAME]```.
+There's also possibility to run services by going to particual service's project and executing ```dotnet run``` in ```src/[PROJECT_NAME]```.
 
 
 ### Used technologies:
