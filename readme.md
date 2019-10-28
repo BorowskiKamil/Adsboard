@@ -1,5 +1,4 @@
-# Adsboard
-
+# Adsboard 📋
 The goal of this project is just a showcase of one of many approches to microservices in .NET. It's written in .NET Core 2.2 with communication over RabbitMQ.
 
 ### How to use:
