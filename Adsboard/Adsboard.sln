@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Adsboard.Common", "..\Adsbo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Adsboard.Services.Identity", "..\Adsboard.Services.Identity\src\Adsboard.Services.Identity\Adsboard.Services.Identity.csproj", "{5AE91A71-35FF-4A03-998A-1DC41E84B601}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Adsboard.Services.Users", "..\Adsboard.Services.Users\Adsboard.Services.Users.csproj", "{41CA55F3-D447-4E7B-9DC2-117A86B08064}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Adsboard.Services.Users", "..\Adsboard.Services.Users\src\Adsboard.Services.Users\Adsboard.Services.Users.csproj", "{41CA55F3-D447-4E7B-9DC2-117A86B08064}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Adsboard.Services.Operations", "..\Adsboard.Services.Operations\src\Adsboard.Services.Operations\Adsboard.Services.Operations.csproj", "{F36F8186-8019-48BB-B996-F3D8397F5AEA}"
 	ProjectSection(ProjectDependencies) = postProject
