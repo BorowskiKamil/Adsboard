@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.26124.0
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{8C316212-31B9-4E7A-96A0-CB9D179BE572}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Adsboard.Identity", "src\Adsboard.Identity\Adsboard.Identity.csproj", "{F7DD7739-869E-4B5F-9523-D0EC60F9C256}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Adsboard.Services.Identity", "src\Adsboard.Services.Identity\Adsboard.Services.Identity.csproj", "{F7DD7739-869E-4B5F-9523-D0EC60F9C256}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
