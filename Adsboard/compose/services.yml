@@ -1,0 +1,22 @@
+version: '3.2'
+
+services:
+  api:
+    image: api
+    container_name: api
+    build: 
+      context: ../../
+      dockerfile: ./Adsboard.Api/Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=docker
+    ports:
+      - 5100:5100
+      - 5000:5000
+    volumes:
+      - ../certs:/root/.dotnet/https/
+    networks:
+      - adsboard.network
+
+networks:
+  adsboard.network:
+    external: true
