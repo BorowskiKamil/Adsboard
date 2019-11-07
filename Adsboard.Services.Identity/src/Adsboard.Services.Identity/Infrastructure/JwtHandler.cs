@@ -23,6 +23,7 @@ namespace Adsboard.Services.Identity.Infrastructure
         private readonly JwtSecurityTokenHandler _jwtSecurityTokenHandler = new JwtSecurityTokenHandler();
         private readonly JwtOptions _options;
         private readonly SigningCredentials _signingCredentials;
+        private readonly EncryptingCredentials _encryptingCredentials;
         private readonly TokenValidationParameters _tokenValidationParameters;
 
         public JwtHandler(JwtOptions options)
@@ -30,6 +31,7 @@ namespace Adsboard.Services.Identity.Infrastructure
             _options = options;
             var issuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_options.SecretKey));
             _signingCredentials = new SigningCredentials(issuerSigningKey, SecurityAlgorithms.HmacSha256);
+            _encryptingCredentials = new EncryptingCredentials(issuerSigningKey, JwtConstants.DirectKeyUseAlg, SecurityAlgorithms.Aes256CbcHmacSha512);
             _tokenValidationParameters = new TokenValidationParameters
             {
                 ValidateIssuerSigningKey = true,
@@ -65,13 +67,18 @@ namespace Adsboard.Services.Identity.Infrastructure
                                ?? Array.Empty<Claim>();
             jwtClaims.AddRange(customClaims);
             var expires = now.AddMinutes(_options.ExpiryMinutes);
-            var jwt = new JwtSecurityToken(
-                issuer: _options.Issuer,
-                claims: jwtClaims,
-                notBefore: now,
-                expires: expires,
-                signingCredentials: _signingCredentials
+
+            var jwt = new JwtSecurityTokenHandler().CreateJwtSecurityToken(
+                _options.Issuer,
+                null,
+                new ClaimsIdentity(jwtClaims),
+                null,
+                expires: DateTime.UtcNow.AddMinutes(5),
+                null,
+                signingCredentials: _signingCredentials,
+                encryptingCredentials: _encryptingCredentials
             );
+
             var token = new JwtSecurityTokenHandler().WriteToken(jwt);
 
             return new JsonWebToken

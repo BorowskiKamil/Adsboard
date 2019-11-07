@@ -26,11 +26,13 @@ namespace Adsboard.Api.Authentication
             services.Configure<AuthenticationOptions>(section);
             services.AddSingleton(options);
 
-            var signingKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(options.SecretKey));
+            var signingKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(options.SecretKey));
+            var tokenDecryptionKey  = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(options.SecretKey));
             var tokenValidationParameters = new TokenValidationParameters
             {
                 ValidateIssuerSigningKey = true,
                 IssuerSigningKey = signingKey,
+                TokenDecryptionKey = tokenDecryptionKey,
                 ValidateIssuer = true,
                 ValidIssuer = options.Issuer,
                 ValidateAudience = options.ValidateAudience,

@@ -1,6 +1,6 @@
 @apiUrl = http://localhost:5000
 @identityUrl = http://localhost:5001
-@accessToken = xxxxxxxxxxxxxxx
+@accessToken = xxxxxxxxx
 
 ### Sign up
 POST {{identityUrl}}/sign-up

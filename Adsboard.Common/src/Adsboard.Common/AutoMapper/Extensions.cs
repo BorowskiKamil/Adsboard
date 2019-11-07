@@ -11,16 +11,7 @@ namespace Adsboard.Common.AutoMapper
 		{
 			if (services == null) throw new ArgumentNullException(nameof(services));
 
-			services.AddAutoMapper(Assembly.GetCallingAssembly());
-			RegisterMappings();
-		}
-
-		public static MapperConfiguration RegisterMappings(params Profile[] profiles)
-		{
-			return new MapperConfiguration(cfg =>
-            {
-				cfg.AddProfiles(profiles);
-            });
+			services.AddAutoMapper(profiles);
 		}
     }
 }
