@@ -11,6 +11,7 @@ It's required to run both of commands. By executing first one you'll run depende
 
 There's also possibility to run services by going to particual service's project and executing ```dotnet run``` in ```src/[PROJECT_NAME]```.
 
+Every service contains a rest file for convenient endpoints testing. It's recommended to use with Visual Studio Code extension [REST Client](https://marketplace.visualstudio.com/items?itemName=humao.rest-client).
 
 ### Used technologies:
 - ASP.NET Core 2.2
